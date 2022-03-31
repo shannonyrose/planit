@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const toDoList = require('./models/toDoList');
+const toDoItem = require('./models/toDoItem');
 mongoose.connect('mongodb://localhost:27017/planit', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('MongoDB connection is open');
@@ -9,18 +9,14 @@ mongoose.connect('mongodb://localhost:27017/planit', { useNewUrlParser: true, us
         console.log(err);
     })
 
-const li = new toDoList({
+const testToDo = new toDoItem({
     date: '2022-03-24',
     category:'general',
-    toDoItems: [{
-        content: "go to store",
-    }, {
-        content: "eat lunch"
-    }]
+    content: 'go to the store'
 });
 
-li.save().then(li => {
-    console.log(li);
+testToDo.save().then(testToDo => {
+    console.log(testToDo);
 })
 .catch(err => {
     console.log(err);

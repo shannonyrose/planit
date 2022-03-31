@@ -22,33 +22,38 @@ mongoose.connect('mongodb://localhost:27017/planit', { useNewUrlParser: true, us
         console.log(err);
     })
 
-app.get('/', async (req, res) => {
+app.get('/todo', async (req, res) => {
     const foundToDoItem = await toDoItem.find({});
     console.log(foundToDoItem)
     res.render('index', { foundToDoItem });
 })
 
-app.post('/', async (req, res) => {
+
+app.get('/', async (req, res) => {
+    res.render('login');
+})
+
+app.post('/todo', async (req, res) => {
     const { newToDo } = req.body;
     console.log(newToDo);
     toDoItem.create({content: `${newToDo}`});
     res.redirect('/');
 })
 
-app.get('/edit/:id', async (req, res) => {
+app.get('/todo/edit/:id', async (req, res) => {
     const foundToDoItem = await toDoItem.find({});
     res.render('edit', { foundToDoItem });
 })
 
-app.patch('/edit/:id', async (req, res) => {
+app.patch('/todo/edit/:id', async (req, res) => {
     const {id} = req.params;
     const foundToDoItem = await toDoItem.findById(id);
-    foundToDoItem.content = `${req.body.content}`;
+    foundToDoItem.content = `${req.body.updatedToDo}`;
     foundToDoItem.save();
     res.redirect('/');
 })
 
-app.delete('/:id', async (req, res) => {
+app.delete('/todo/:id', async (req, res) => {
     const id = req.params.id;
     await toDoItem.findByIdAndDelete(id);
     res.redirect('/');
