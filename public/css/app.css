@@ -1,0 +1,101 @@
+#newToDoForm{
+    display: none;
+}
+
+.dropDownOptions{
+    display: none;
+}
+
+nav.info {
+    color: rgba(255,255,255, 0.5);
+}
+
+.info .navbar-brand {
+    font-family: 'Volkhov', serif;
+    font-size: 32px;
+    color: #4A4646;
+    padding-left: 18px;
+    padding-top: 10px;
+    margin-right: 0px;
+}
+
+button.info {
+    background-color: #F8B746;
+    color: #4A4646;
+    height: 49px;
+    width: 151px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: 42px;
+}
+
+button.submit {
+    background-color: #F8B746;
+    color: #4A4646;
+    height: 49px;
+    width: 151px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+#leftLogIn {
+    border-right: 1px solid #4A4646;
+    background-color: #F2EAE4;
+    height: 100vh;
+}
+
+#rightLogIn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.signIn {
+    border: 1.75px solid #4A4646;
+    border-radius: 50px;
+    width: 334px;
+    height: 62px;
+    margin-top: 50px;
+}
+
+.loginInfoLabel {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #4A4646;
+}
+
+.forgotLoginInfo {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    text-decoration: none;
+    color: #4A4646;
+}
+
+.forgotLoginInfo:hover {
+    font-weight: 300;
+    font-weight: 500;
+    color: #4A4646;
+
+}
+
+#loginInformation {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+   
