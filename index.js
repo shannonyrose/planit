@@ -28,6 +28,10 @@ app.get('/todo', async (req, res) => {
     res.render('index', { foundToDoItem });
 })
 
+app.get('/dashboard', async (req, res) => {
+    res.render('dashboard');
+})
+
 
 app.get('/', async (req, res) => {
     res.render('login');

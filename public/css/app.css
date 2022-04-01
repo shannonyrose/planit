@@ -1,3 +1,9 @@
+input {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
 #newToDoForm{
     display: none;
 }
@@ -19,34 +25,9 @@ nav.info {
     margin-right: 0px;
 }
 
-button.info {
-    background-color: #F8B746;
-    color: #4A4646;
-    height: 49px;
-    width: 151px;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    margin-left: 42px;
-}
-
-button.submit {
-    background-color: #F8B746;
-    color: #4A4646;
-    height: 49px;
-    width: 151px;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    margin-top: 50px;
-}
 
 #leftLogIn {
-    border-right: 1px solid #4A4646;
+    /* border-right: 1px solid #4A4646; */
     background-color: #F2EAE4;
     height: 100vh;
 }
@@ -57,13 +38,17 @@ button.submit {
     justify-content: center;
 }
 
+input:focus, input:active {
+    outline:  #4a464677 thin solid;
+    box-shadow: none;
+}
+
 
 .signIn {
     border: 1.75px solid #4A4646;
     border-radius: 50px;
     width: 334px;
     height: 62px;
-    margin-top: 50px;
 }
 
 .loginInfoLabel {
@@ -71,6 +56,7 @@ button.submit {
     font-weight: 300;
     font-size: 18px;
     color: #4A4646;
+    margin-bottom: 5px;
 }
 
 .forgotLoginInfo {
@@ -79,13 +65,13 @@ button.submit {
     font-size: 12px;
     text-decoration: none;
     color: #4A4646;
+    margin-top: 5px;
 }
 
 .forgotLoginInfo:hover {
     font-weight: 300;
-    font-weight: 500;
     color: #4A4646;
-
+    text-decoration: underline #4A4646;
 }
 
 #loginInformation {
@@ -93,6 +79,76 @@ button.submit {
     justify-content: center;
 }
 
+.btn-primary{
+    background-color: #F8B746;
+    color: #4A4646;
+    height: 49px;
+    width: 151px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.btn-primary:hover {
+    background-color: #e9a52f;
+    color: #4A4646;
+}
+
+.btn-primary.standard:focus, .btn-primary.standard:active{
+    outline: #e9a52f49 solid;
+    box-shadow: none;
+    background-color: #e9a52f;
+    color: #4A4646;
+}
+
+.nav-item {
+    margin-left: 50px;
+}
+
+#sideNav {
+    background-color: #F2EAE4;
+    height: 100vh;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+#mainContent {
+    height: 100vh;
+}
+
+.sideNav-items{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.sideNav-item{
+    text-decoration: none;
+    color: #4A4646;
+}
+
+.sideNavBrand {
+    font-family: 'Volkhov', serif;
+    font-size: 32px;
+    color: #4A4646;
+    padding-left: 18px;
+    padding-top: 10px;
+    margin-right: 0px;
+}
+
+.sideNav-itemsContainer{
+    margin-top: 50px;
+}
+
+.sideNav-itemContainer{
+    margin-top: 100px;
+}
+
+.calendar{
+    color: #4A4646;
+}
 
 
 
