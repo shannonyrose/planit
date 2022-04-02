@@ -24,3 +24,13 @@ for (let counter = 0; counter < dropDownButtons.length && counter < dropDownOpti
         }
     })
 }
+
+// const sideNavItemWrapper = document.getElementsByClassName('sideNav-item-wrapper');
+// for (let counter = 0; counter < sideNavItemWrapper.length; counter++) {
+//     sideNavItemWrapper.addEventListener('onclick', (e) => {
+//         sideNavItemWrapper.classList.toggle('selected');
+//     })
+// }
+
+
+
