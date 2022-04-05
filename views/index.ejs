@@ -1,42 +1,223 @@
 <%- include('partials/header') %>
     <%- include('partials/sideNavbarHead') %>
-        <div class="container">
-            <div class="row">
-                <h1>To-Do</h1>
+        <div class="container-fluid">
+            <div class="gearRow row">
+                <div class="gearCol col">
+                    <!-- <form class="searchForm">
+                        <input class="searchBar" placeholder="Search" aria-label="Search">
+                        <button class="search" type="submit"><i class="bi-search"></i></button>
+                    </form> -->
+                    <i class="bi-gear"></i>
+                </div>
             </div>
-            <div class="row">
-                <button id="promptNewToDo"><i class="bi bi-plus-circle"></i></button>
-            </div>
-            <div>
-                <div class="row">
-                    <div class="col-3">
-                        <ul>
-                            <% for(let toDoItem of foundToDoItem) { %>
-                                <li class='toDoList'>
-                                    <%= toDoItem.content %>
-                                    <input type="checkbox">
-                                        <button class="dropDownButton"><i class="bi bi-three-dots"></i></button>
-                                        <div class='dropDownOptions'>
-                                            <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
-                                                <button><i class="bi bi-trash"></i></button>
-                                            </form>
-                                            <br>
-                                            <button><a href="/todo/edit/<%=toDoItem._id%>"><i
-                                                        class="bi bi-pencil-square"></i>
-                                                </a></button>
-                                            </form>
-                                        </div>
-                                </li>
-                                <% } %>
-                        </ul>
+            <div class="content-body">
+                <div class="row pageHeader">
+                    <div class="col-6">
+                        <h1 class="titleHeader">Dashboard</h1>
+                    </div>
+                    <div class="col-5 weekCol">
+                        <h2 class="weekHeader">Week of 4/3 - 4/9</h2>
+                        <a class = "weekForward" href=""><i class="iconAlign bi bi-caret-left"></i></a>
+                        <a class = "weekBackward" href=""><i class="iconAlign bi bi-caret-right"></i></a>
+                    </div>
+                    <div class="col-1 layoutCol">
+                        <a href="" class="gridView"><i class="bi bi-grid"></i></a>
+                        <a href="" class="listView"><i class="bi bi-list"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <div class="row date">
+                        <h3>Sunday April 3</h3>
+                    </div>
+                    <div class="row toDoList">
+                        <div class="col-3">
+                            <!-- <h2>Cleaning</h2> -->
+                            <ul>
+                                <form id="newToDoForm" action="/todo" method="POST">
+                                    <input type="checkbox"><input name="newToDo" id="newToDo" type="text">
+                                    <button id="submitNewToDo" type="submit" hidden>+</button>
+                                </form>
+                                <% for(let toDoItem of foundToDoItem) { %>
+                                    <li class='toDoItem'>
+                                        <input type="checkbox">
+                                        <span class="toDoItemContent">
+                                            <%= toDoItem.content %>
+                                        </span>
+                                        <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                            <button><i class="toDoItemSettings bi bi-trash"></i></button>
+                                        </form>
+                                        <br>
+                                        <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                    class="toDoItemSettings bi bi-pencil-square"></i>
+                                            </a></button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row date">
+                        <h3>Monday April 4</h3>
+                    </div>
+                    <div class="row toDoList">
+                        <div class="col-3">
+                            <!-- <h2>Cleaning</h2>-->
+                            <ul>
+                                <form id="newToDoForm" action="/todo" method="POST">
+                                    <input type="checkbox"><input name="newToDo" id="newToDo" type="text">
+                                    <button id="submitNewToDo" type="submit" hidden>+</button>
+                                </form>
+                                <% for(let toDoItem of foundToDoItem) { %>
+                                    <li class='toDoItem'>
+                                        <input type="checkbox">
+                                        <span class="toDoItemContent">
+                                            <%= toDoItem.content %>
+                                        </span>
+                                        <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                            <button><i class="toDoItemSettings bi bi-trash"></i></button>
+                                        </form>
+                                        <br>
+                                        <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                    class="toDoItemSettings bi bi-pencil-square"></i>
+                                            </a></button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row date">
+                        <h3>Tuesday April 5</h3>
+                    </div>
+                    <div class="row toDoList">
+                        <div class="col-3">
+                            <!-- <h2>Cleaning</h2>-->
+                            <ul>
+                                <form id="newToDoForm" action="/todo" method="POST">
+                                    <input type="checkbox"><input name="newToDo" id="newToDo" type="text">
+                                    <button id="submitNewToDo" type="submit" hidden>+</button>
+                                </form>
+                                <% for(let toDoItem of foundToDoItem) { %>
+                                    <li class='toDoItem'>
+                                        <input type="checkbox">
+                                        <span class="toDoItemContent">
+                                            <%= toDoItem.content %>
+                                        </span>
+                                        <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                            <button><i class="toDoItemSettings bi bi-trash"></i></button>
+                                        </form>
+                                        <br>
+                                        <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                    class="toDoItemSettings bi bi-pencil-square"></i>
+                                            </a></button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row date">
+                        <h3>Wednesday April 6</h3>
+                    </div>
+                    <div class="row toDoList">
+                        <div class="col-3">
+                            <!-- <h2>Cleaning</h2>-->
+                            <ul>
+                                <form id="newToDoForm" action="/todo" method="POST">
+                                    <input type="checkbox"><input name="newToDo" id="newToDo" type="text">
+                                    <button id="submitNewToDo" type="submit" hidden>+</button>
+                                </form>
+                                <% for(let toDoItem of foundToDoItem) { %>
+                                    <li class='toDoItem'>
+                                        <input type="checkbox">
+                                        <span class="toDoItemContent">
+                                            <%= toDoItem.content %>
+                                        </span>
+                                        <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                            <button><i class="toDoItemSettings bi bi-trash"></i></button>
+                                        </form>
+                                        <br>
+                                        <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                    class="toDoItemSettings bi bi-pencil-square"></i>
+                                            </a></button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row date">
+                        <h3>Thursday April 7</h3>
+                    </div>
+                    <div class="row toDoList">
+                        <div class="col-3">
+                            <!-- <h2>Cleaning</h2>-->
+                            <ul>
+                                <form id="newToDoForm" action="/todo" method="POST">
+                                    <input type="checkbox"><input name="newToDo" id="newToDo" type="text">
+                                    <button id="submitNewToDo" type="submit" hidden>+</button>
+                                </form>
+                                <% for(let toDoItem of foundToDoItem) { %>
+                                    <li class='toDoItem'>
+                                        <input type="checkbox">
+                                        <span class="toDoItemContent">
+                                            <%= toDoItem.content %>
+                                        </span>
+                                        <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                            <button><i class="toDoItemSettings bi bi-trash"></i></button>
+                                        </form>
+                                        <br>
+                                        <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                    class="toDoItemSettings bi bi-pencil-square"></i>
+                                            </a></button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row date">
+                        <h3>Friday April 8</h3>
+                    </div>
+                    <div class="row toDoList">
+                        <div class="col-3">
+                            <!-- <h2>Cleaning</h2>-->
+                            <ul>
+                                <form id="newToDoForm" action="/todo" method="POST">
+                                    <input type="checkbox"><input name="newToDo" id="newToDo" type="text">
+                                    <button id="submitNewToDo" type="submit" hidden>+</button>
+                                </form>
+                                <% for(let toDoItem of foundToDoItem) { %>
+                                    <li class='toDoItem'>
+                                        <input type="checkbox">
+                                        <span class="toDoItemContent">
+                                            <%= toDoItem.content %>
+                                        </span>
+                                        <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                            <button><i class="toDoItemSettings bi bi-trash"></i></button>
+                                        </form>
+                                        <br>
+                                        <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                    class="toDoItemSettings bi bi-pencil-square"></i>
+                                            </a></button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <form id="newToDoForm" action="/todo" method="POST">
-            <input name="newToDo" type="text">
-            <button id="submitNewToDo" type="submit" hidden>+</button>
-        </form>
         <%- include('partials/sideNavbarFoot') %>
             <%- include('partials/footer') %>

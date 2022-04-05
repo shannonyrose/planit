@@ -8,12 +8,12 @@ input {
     display: none;
 }
 
-.dropDownOptions{
-    display: none;
-}
-
 nav.info {
     color: rgba(255,255,255, 0.5);
+}
+
+.nav-item{
+    margin-left: 50px;
 }
 
 .info .navbar-brand {
@@ -105,10 +105,11 @@ input:focus, input:active {
 
 #sideNav {
     background-color: #F2EAE4;
-    height: 100vh;
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: 300;
     font-size: 16px;
+    position: fixed;
+    height: 100vh;
 }
 
 i{
@@ -158,8 +159,8 @@ i{
     align-items: center; 
 }
 
-.sideNav-itemContainer{
-    margin-bottom: 50px;
+.sideNav-itemContainer.profilePicture{
+    margin-bottom: 2em;
 }
 
 .sideNav-item-wrapper
@@ -214,15 +215,19 @@ h1{
     font-size: 32px;
 }
 
-.toDoList{
+.toDoItem{
     list-style-type: none;
     color: #4A4646;
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: 300;
     font-size: 16px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
 }
 
-.toDoList button{
+.toDoItem button{
     background-color: rgba(255,255,255, 0.5);
     border: rgba(255,255,255, 0.5);
 }
@@ -230,13 +235,197 @@ h1{
 #promptNewToDo{
     background-color: rgba(255,255,255, 0.5);
     border: rgba(255,255,255, 0.5);
+    padding-right: 3px;
 }
 
-#promptNewToDo i:hover{
-    font-size: 2em;
-    transition: font-size 0.5s;
+.promptNewToDoItem{
+    color: #4a464688;
+    font-size: 1.09em;
 }
 
 #mainContent {
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 1px solid #F8B746;
+    margin-right: 1em;
+    background-color: #ffff;
+    transition: background-color 0.25s;
+    box-shadow: none;
+    outline: none;
+}
+
+input[type="checkbox"]:checked {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: #F8B746;
+    outline: #e9a52f49 0.15em solid;
+    transition: background-color 0.25s;
+}
+
+.toDoItemContent{
+    margin-right: 1em;
+}
+
+#newToDo{
+    border: none;
+    border-bottom: 0.5px solid #4a464683;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+#newToDo:focus, #newToDo:active{
+    border: none;
+    border-radius: 15px;
+    outline: 0.5px solid #4a464683;
+    box-shadow: none;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.search{
+    background-color: rgba(255,255,255, 0.5);
+    border: rgba(255,255,255, 0.5);
+}
+
+.searchBar{
+    border: 1px solid #4a46462c;
+    border-radius: 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.searchBar[input]{
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.gearRow{
+    display:flex;
+    justify-content: end;
+    align-items: right;
+}
+
+.gearCol{
+    display:flex;
+    justify-content: end;
+    padding-right: 18px;
+    padding-top: 10px;
+}
+
+.searchForm{
+    margin-right: 2%;
+}
+
+.pageHeader{
+    margin-top: 3%;
+}
+
+.date{
+    margin-top: 2%;
+}
+
+.content-body{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.toDoList{
+    padding-top: 1%;
+    border-top: 1px solid #4a46462c;
+    /* border-bottom: 1px solid #4a46462c; */
+}
+
+h3{
+    color: #4a464688;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.weekHeader{
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.25em;
+    display: inline;
+    align-self: center;
+    padding-right: 1%;
+}
+
+.weekCol, .layoutCol{
+    display: flex;
+    justify-content: end;
+}
+
+.gridView{
+    margin-right: 0.75em;
+}
+
+.sideNav-projectList{
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    list-style-type: none;
+    padding-left: 3em;
+}
+
+.projectListItemIcon{
+    font-size: 0.75em;
+    padding-right: 0.5em;
+}
+
+.projectTitle{
+    padding-top: 5%;
+}
+
+.projectTitleLink, .projectTitleLink:hover{
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    text-decoration: none;
+}
+
+.promptNewToDoItemCol{
+    display: flex;
+    justify-content: end;
+}
+
+.toDoItemSettings{
+    color: #4a464688;
+    font-size: 1.09em;
+}
+
+.editToDoItem{
+    border: none;
+    border-bottom: 0.5px solid #4a464683;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.editToDoItem:focus, .editToDoItem:active{
+    border: none;
+    border-radius: 15px;
+    outline: 0.5px solid #4a464683;
+    box-shadow: none;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
 }

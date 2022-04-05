@@ -12,25 +12,9 @@ submitNewToDoBtn.addEventListener('submit', () => {
     newToDoForm.style.display = 'none';
 });
 
-const dropDownOptions = document.getElementsByClassName('dropDownOptions');
-const dropDownButtons = document.getElementsByClassName('dropDownButton');
-for (let counter = 0; counter < dropDownButtons.length && counter < dropDownOptions.length; counter++) {
-    dropDownButtons[counter].addEventListener('click', () => {
-        if (dropDownOptions[counter].style.display === 'block') {
-            dropDownOptions[counter].style.display = 'none';
-        }
-        else {
-            dropDownOptions[counter].style.display = 'block';
-        }
-    })
-}
 
-// const sideNavItemWrapper = document.getElementsByClassName('sideNav-item-wrapper');
-// for (let counter = 0; counter < sideNavItemWrapper.length; counter++) {
-//     sideNavItemWrapper.addEventListener('onclick', (e) => {
-//         sideNavItemWrapper.classList.toggle('selected');
-//     })
-// }
+
+
 
 
 
