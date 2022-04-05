@@ -1,4 +1,5 @@
 <%- include('partials/header') %>
+<%- include('partials/sideNavbarHead') %>
     <button id="promptNewToDo">+</button>
     <div>
         <ul>
@@ -15,9 +16,9 @@
                 <% } %>
         </ul>
     </div>
-    <form id="newToDoForm" action="/" method="POST">
+    <form id="newToDoForm" action="/todo" method="POST">
         <input name="newToDo" type="text">
         <button id="submitNewToDo" type="submit" hidden>+</button>
     </form>
-
+    <%- include('partials/sideNavbarFoot') %>
     <%- include('partials/footer') %>

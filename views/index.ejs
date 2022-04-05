@@ -1,32 +1,42 @@
 <%- include('partials/header') %>
-<%- include('partials/navbar') %>
-    <button id="promptNewToDo">+</button>
-    <div>
-        <ul>
-            <% for(let toDoItem of foundToDoItem) { %>
-                <li>
-                    <%= toDoItem.content %>
-                        <div>
-                            <button class="dropDownButton">Dropdown</button>
-                            <div>
-                                <div class='dropDownOptions'>
-                                    <form method = "POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
-                                    <button>Delete</button>
-                                    </form>
-                                    <br>
-                                    <button><a href="/todo/edit/<%=toDoItem._id%>">Edit</a></button>
-                                    </form>
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                </li>
-                <% } %>
-        </ul>
-    </div>
-</div>
-    <form id="newToDoForm" action="/" method="POST">
-        <input name="newToDo" type="text">
-        <button id="submitNewToDo" type="submit" hidden>+</button>
-    </form>
-<%- include('partials/footer') %>
+    <%- include('partials/sideNavbarHead') %>
+        <div class="container">
+            <div class="row">
+                <h1>To-Do</h1>
+            </div>
+            <div class="row">
+                <button id="promptNewToDo"><i class="bi bi-plus-circle"></i></button>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-3">
+                        <ul>
+                            <% for(let toDoItem of foundToDoItem) { %>
+                                <li class='toDoList'>
+                                    <%= toDoItem.content %>
+                                    <input type="checkbox">
+                                        <button class="dropDownButton"><i class="bi bi-three-dots"></i></button>
+                                        <div class='dropDownOptions'>
+                                            <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                                <button><i class="bi bi-trash"></i></button>
+                                            </form>
+                                            <br>
+                                            <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                        class="bi bi-pencil-square"></i>
+                                                </a></button>
+                                            </form>
+                                        </div>
+                                </li>
+                                <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="newToDoForm" action="/todo" method="POST">
+            <input name="newToDo" type="text">
+            <button id="submitNewToDo" type="submit" hidden>+</button>
+        </form>
+        <%- include('partials/sideNavbarFoot') %>
+            <%- include('partials/footer') %>

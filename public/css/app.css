@@ -1,3 +1,9 @@
+input {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
 #newToDoForm{
     display: none;
 }
@@ -19,34 +25,9 @@ nav.info {
     margin-right: 0px;
 }
 
-button.info {
-    background-color: #F8B746;
-    color: #4A4646;
-    height: 49px;
-    width: 151px;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    margin-left: 42px;
-}
-
-button.submit {
-    background-color: #F8B746;
-    color: #4A4646;
-    height: 49px;
-    width: 151px;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    margin-top: 50px;
-}
 
 #leftLogIn {
-    border-right: 1px solid #4A4646;
+    /* border-right: 1px solid #4A4646; */
     background-color: #F2EAE4;
     height: 100vh;
 }
@@ -57,13 +38,17 @@ button.submit {
     justify-content: center;
 }
 
+input:focus, input:active {
+    outline:  #4a464677 thin solid;
+    box-shadow: none;
+}
+
 
 .signIn {
     border: 1.75px solid #4A4646;
     border-radius: 50px;
     width: 334px;
     height: 62px;
-    margin-top: 50px;
 }
 
 .loginInfoLabel {
@@ -71,6 +56,7 @@ button.submit {
     font-weight: 300;
     font-size: 18px;
     color: #4A4646;
+    margin-bottom: 5px;
 }
 
 .forgotLoginInfo {
@@ -79,13 +65,13 @@ button.submit {
     font-size: 12px;
     text-decoration: none;
     color: #4A4646;
+    margin-top: 5px;
 }
 
 .forgotLoginInfo:hover {
     font-weight: 300;
-    font-weight: 500;
     color: #4A4646;
-
+    text-decoration: underline #4A4646;
 }
 
 #loginInformation {
@@ -93,9 +79,164 @@ button.submit {
     justify-content: center;
 }
 
+.btn-primary{
+    background-color: #F8B746;
+    color: #4A4646;
+    height: 49px;
+    width: 151px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
 
+.btn-primary:hover {
+    background-color: #e9a52f;
+    color: #4A4646;
+}
 
+.btn-primary.standard:focus, .btn-primary.standard:active{
+    outline: #e9a52f49 solid;
+    box-shadow: none;
+    background-color: #e9a52f;
+    color: #4A4646;
+}
 
+#sideNav {
+    background-color: #F2EAE4;
+    height: 100vh;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
 
+i{
+    color: #4A4646;
+    font-size: 1.5rem;
+}
 
-   
+#profilePicture{
+    border-radius: 50%;
+    width: 84.7px;
+    height: 77.8px;
+}
+
+.sideNav-items{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.sideNav-item{
+    text-decoration: none;
+    color: #4A4646;
+    /* padding-left: 10px; */
+}
+
+.sideNav-item:hover{
+    text-decoration: none;
+    color: #4A4646;
+}
+
+.sideNavBrand, .sideNavBrand:hover {
+    font-family: 'Volkhov', serif;
+    font-size: 32px;
+    color: #4A4646;
+    padding-left: 18px;
+    padding-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+}
+
+.sideNav-itemsContainer{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.sideNav-itemContainer{
+    margin-bottom: 50px;
+}
+
+.sideNav-item-wrapper
+{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    height: 49px;
+    width: 151px;
+}
+
+.sideNav-item-wrapper:hover
+{
+    background-color: #F8B746;
+    color: #4A4646;
+    height: 49px;
+    width: 151px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.sideNav-item-wrapper:focus, .sideNav-item-wrapper:active{
+    outline: #e9a52f49 solid;
+    box-shadow: none;
+    background-color: #e9a52f;
+    color: #4A4646;
+}
+
+ul{
+    padding: 0px;
+}
+
+.sideNav-item-wrapper{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 18px;
+}
+
+.icon-wrapper{
+    display: flex;
+    justify-content: start;
+    padding-right: 10px;
+}
+
+h1{
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.toDoList{
+    list-style-type: none;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.toDoList button{
+    background-color: rgba(255,255,255, 0.5);
+    border: rgba(255,255,255, 0.5);
+}
+
+#promptNewToDo{
+    background-color: rgba(255,255,255, 0.5);
+    border: rgba(255,255,255, 0.5);
+}
+
+#promptNewToDo i:hover{
+    font-size: 2em;
+    transition: font-size 0.5s;
+}
+
+#mainContent {
+    height: 100vh;
+}

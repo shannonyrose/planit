@@ -28,7 +28,6 @@ app.get('/todo', async (req, res) => {
     res.render('index', { foundToDoItem });
 })
 
-
 app.get('/', async (req, res) => {
     res.render('login');
 })
@@ -37,7 +36,7 @@ app.post('/todo', async (req, res) => {
     const { newToDo } = req.body;
     console.log(newToDo);
     toDoItem.create({content: `${newToDo}`});
-    res.redirect('/');
+    res.redirect('/todo');
 })
 
 app.get('/todo/edit/:id', async (req, res) => {
@@ -48,20 +47,22 @@ app.get('/todo/edit/:id', async (req, res) => {
 app.patch('/todo/edit/:id', async (req, res) => {
     const {id} = req.params;
     const foundToDoItem = await toDoItem.findById(id);
-    foundToDoItem.content = `${req.body.updatedToDo}`;
+    foundToDoItem.content = `${req.body.content}`;
     foundToDoItem.save();
-    res.redirect('/');
+    res.redirect('/todo');
 })
 
 app.delete('/todo/:id', async (req, res) => {
     const id = req.params.id;
     await toDoItem.findByIdAndDelete(id);
-    res.redirect('/');
+    res.redirect('/todo');
 })
 
 
 app.listen(3000, () => {
     console.log(`Listening on ${port}`);
 });
+
+
 
 
