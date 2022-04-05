@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+    <%- include('partials/sideNavbarHead') %>
+
+        <div class="container-fluid">
+            <div class="gearRow row">
+                <div class="gearCol col">
+                    <i class="bi-gear"></i>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="row pageHeader">
+                    <div class="col-6">
+                        <h1 class="titleHeader">
+                            <%= foundProjectById.title %>
+                        </h1>
+                    </div>
+                    <div class="col-6 layoutCol">
+                        <a href="" class="gridView"><i class="bi bi-grid"></i></a>
+                        <a href="" class="listView"><i class="bi bi-list"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <% for(let toDoList of foundProjectById.toDoLists) { %>
+                        <div class="row date">
+                            <div class="col-6">
+                                <h3>
+                                    <%= toDoList.title %>
+                                </h3>
+                            </div>
+                            <div class="col-6 promptNewToDoItemCol">
+                                <button id="promptNewToDo"><i class="promptNewToDoItem bi bi-plus-circle"></i></button>
+                            </div>
+                        </div>
+                        <div class="row toDoList">
+                            <div class="col-3">
+                                <ul>
+                                    <form id="newToDoForm" action="/todo" method="POST">
+                                        <input type="checkbox"><input name="newToDo" id="newToDo" type="text">
+                                        <button id="submitNewToDo" type="submit" hidden>+</button>
+                                    </form>
+                                    <% for(let toDoItem of toDoList.toDoItems) { %>
+                                        <li class='toDoItem'>
+                                            <input type="checkbox">
+                                            <span class="toDoItemContent">
+                                                <%=toDoItem.content%>
+                                            </span>
+                                            <form method="POST" action="/todo/<%=toDoItem._id%>?_method=DELETE">
+                                                <button><i class="toDoItemSettings bi bi-trash"></i></button>
+                                            </form>
+                                            <br>
+                                            <button><a href="/todo/edit/<%=toDoItem._id%>"><i
+                                                        class="toDoItemSettings bi bi-pencil-square"></i>
+                                                </a></button>
+                                            </form>
+                                        </li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <% } %>
+
+            </div>
+
+
+            <%- include('partials/sideNavbarFoot') %>
+                <%- include('partials/footer') %>
