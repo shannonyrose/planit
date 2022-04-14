@@ -1,0 +1,113 @@
+<%- include('partials/header') %>
+    <%- include('partials/sideNavbarHead') %>
+        <div class="container-fluid">
+            <div class="gearRow row">
+                <div class="gearCol col">
+                    <a href="/settings"><i class="bi-gear"></i></a>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="row pageHeader">
+                    <div class="col-6">
+                        <h1 class="titleHeader">To-Do Lists</h1>
+                    </div>
+                    <div class="col-5 weekCol">
+                    </div>
+                    <div class="col-1 layoutCol">
+                        <a href="/todolists/grid" class="gridView"><i class="bi bi-grid"></i></a>
+                        <a href="/todolists" class="listView"><i class="bi bi-list"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <% for(let toDoList of foundToDoList) { %>
+                        <div class="row date">
+                            <div class="col">
+                                <h3 class="toDoListTitleHeader">
+                                    <%= toDoList.title %>
+                                </h3>
+                                <button type="button" class="promptNewToDoListTitle toDoListSettingsBtn">
+                                    <i class="toDoListSettings promptNewToDoListTitleIcon bi bi-pencil-square"></i>
+                                </button>
+                                <form method="POST" name="deleteToDoListForm"
+                                    action="/todolists/<%=toDoList._id%>?_method=DELETE">
+                                    <button type="submit" class="toDoListSettingsBtn">
+                                        <i class="toDoListSettings bi bi-trash"></i>
+                                    </button>
+                                </form>
+                                <form class = "pinToDoListForm" method="POST" action="/todolists/<%=toDoList._id%>">
+                                <input hidden name= "isPinned" value = "true" type="text">
+                                <button class="toDoListSettingsBtn">
+                                    <i class="toDoListSettings bi bi-pin-angle"></i>
+                                </button>
+                                </form>
+                            </div>
+                            <form class="newToDoListTitleForm" method="POST"
+                                action="/todolists/<%=toDoList._id%>?_method=PATCH">
+                                <input value="<%= toDoList.title %>" type="text" class="newToDoListTitleInput"
+                                    name="newToDoListTitleInput">
+                                <button type="submit" class="submitNewToDoListTitle"><a
+                                        href="/todolists/<%=toDoList._id%>"></a><i
+                                        class="toDoListSettings bi bi-check-lg"></i></button>
+                            </form>
+                        </div>
+                        <div class="row toDoList">
+                            <div class="col-3">
+                                <ul>
+                                    <% for(let toDoItem of foundToDoItem) { %>
+                                        <% if(JSON.stringify(toDoItem.toDoList)===JSON.stringify(toDoList._id)) { %>
+                                            <li class='toDoItem'>
+                                                <input class = "toDoItemCheckBox" type="checkbox">
+                                                <span class="toDoItemContent">
+                                                    <%=toDoItem.content%>
+                                                </span>
+                                                <button class = "promptUpdateToDoBtn">
+                                                    <i class="toDoItemSettings bi bi-pencil-square"></i>
+                                                </button>
+                                                <form class="updateToDoForm" method="POST"
+                                                    action="/todolists/<%= toDoList._id %>/todoitems/<%=toDoItem._id%>?_method=PATCH">
+                                                    <input value="<%= toDoItem.content %>" type="text" class="updateToDoInput"
+                                                name="updateToDoInput">
+                                                <button type="submit" class="submitUpdatedToDoBtn">
+                                                    <i class="toDoItemSettings bi bi-check-lg"></i>
+                                                </button>
+                                                </form>
+                                                <form method="POST"
+                                                    action="/todolists/<%= toDoList._id %>/todoitems/<%=toDoItem._id%>?_method=DELETE">
+                                                    <button class = "deleteToDoBtn"><i class="toDoItemSettings bi bi-trash"></i></button>
+                                                </form>
+                                            </li>
+                                            <% } %>
+                                                <% } %>
+                                                    <form method="POST" class="newToDoForm"
+                                                        action="/todolists/<%= toDoList._id %>/todoitems?_method=PATCH">
+                                                        <input type="checkbox"><input name="newToDo" class="newToDo"
+                                                            type="text">
+                                                        <button class="submitNewToDo" type="submit"><i
+                                                            class="toDoItemSettings bi bi-check-lg"></i></button>
+                                                    </form>
+                                                    <li class='toDoItem newToDoPlaceHolder'>
+                                                        <button class="promptNewToDo">
+                                                            <i class="promptNewToDoItem bi bi-plus-circle">
+                                                            </i>
+                                                        </button>New Item
+                                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <% } %>
+                            <div class="row date">
+                                <div class="col">
+                                    <form id="newToDoListForm" action="/todolists" method="POST">
+                                        <h3 id="newToDoListPlaceholder">New To-Do List</h3>
+                                        <button type="submit" id="newToDoListBtn"><i
+                                                class="newToDoListIcon bi bi-plus-circle"></i></button>
+                                        <input type="hidden" value="Untitled" name="newToDoList" id="newToDoList"
+                                            type="text">
+                                    </form>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/sideNavbarFoot') %>
+            <%- include('partials/footer') %>

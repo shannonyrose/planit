@@ -9,9 +9,12 @@ const toDoListSchema = new Schema({
         type: Date
     },
     category: {
-        type: String
+        type: String,
+        color: String
     },
-    toDoItems: [{type: Schema.Types.ObjectId, ref: 'toDoItem'}]
+    pinned:{
+        type: String
+    }
 })
 
 const toDoList = mongoose.model('toDoList', toDoListSchema);

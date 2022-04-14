@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const toDoSchema = new mongoose.Schema({
+const toDoSchema = new Schema({
     date: {
         type: Date
     },
@@ -9,7 +10,8 @@ const toDoSchema = new mongoose.Schema({
     },
     content: {
         type: String
-    }
+    },
+    toDoList: { type: Schema.Types.ObjectId, ref: 'toDoList' }
 })
 
 const toDoItem = mongoose.model('toDoItem', toDoSchema);

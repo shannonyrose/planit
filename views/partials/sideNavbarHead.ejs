@@ -7,7 +7,7 @@
             <div class="container sideNav-itemsContainer">
                 <ul class="sideNav-items">
                     <div class="row sideNav-itemContainer profilePicture">
-                        <li><img id="profilePicture" src="/imgs/toshi-lySzv_cqxH8-unsplash.jpg" alt=""></li>
+                        <li><img id="profilePicture" src="/imgs/toshi-lySzv_cqxH8-unsplash.jpg" alt="profilePicture"></li>
                     </div>
                     <div class="row sideNav-itemContainer">
                         <li class="sideNav-listItem">
@@ -15,7 +15,7 @@
                                 <span class="icon-wrapper">
                                     <i class="bi-file-person"></i>
                                 </span>
-                                <a class="sideNav-item" href="/todo">Dashboard</a>
+                                <a class="sideNav-item" href="/dashboard">Dashboard</a>
                             </div>
                         </li>
                     </div>
@@ -25,21 +25,9 @@
                                 <span class="icon-wrapper">
                                     <i class="bi-check2-square"></i>
                                 </span>
-                                <a class="sideNav-item" href="/projects">Projects</a>
+                                <a class="sideNav-item" href="/todolists">To-Do Lists</a>
                             </div>
                         </li>
-                    </div>
-                    <div class="row sideNav-itemContainer">
-                        <ul class="sideNav-projectList">
-                            <% for(let project of foundProject) { %>
-                                <a class="projectTitleLink" href="/projects/<%= project._id %>">
-                                    <li class="projectTitle">
-                                        <i class="projectListItemIcon bi bi-square-fill"></i>
-                                        <%= project.title %>
-                                    </li>
-                                </a>
-                                <% } %>
-                        </ul>
                     </div>
                 </ul>
             </div>

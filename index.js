@@ -4,12 +4,9 @@ const port = 3000;
 const mongoose = require('mongoose');
 const toDoItem = require('./models/toDoItem');
 const toDoList = require('./models/toDoList');
-const Project = require('./models/Project');
 const path = require('path');
 const methodOverride = require('method-override');
-const { findById, findByIdAndDelete } = require('./models/toDoItem');
 const morgan = require('morgan');
-const req = require('express/lib/request');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
@@ -27,67 +24,155 @@ mongoose.connect('mongodb://localhost:27017/planit', { useNewUrlParser: true, us
         console.log(err);
     })
 
-app.get('/todo', async (req, res) => {
+// READ pinned to-do lists (List View)
+app.get('/dashboard', async (req, res) => {
+    const foundToDoList = await toDoList.find({pinned: 'true'});
     const foundToDoItem = await toDoItem.find({});
-    const foundProject = await Project.find({});    
-    console.log(foundToDoItem)
-    res.render('index', { foundToDoItem, foundProject });
+    res.render('index', { foundToDoList, foundToDoItem});
 })
 
-app.get('/projects', async (req, res) => {
-    const foundToDoItem = await toDoItem.find({});
-    const foundProject = await Project.find({});
-    res.render('projects', {foundProject, foundToDoItem})
+// READ settings
+app.get('/settings', async (req, res) => {
+    res.render('settings');
 })
 
-app.get('/projects/:id', async (req, res) => {
-    const {id} = req.params;
-    const foundProject = await Project.find({}); 
-    const foundProjectById = await Project.findById(id).populate('toDoLists').populate('toDoLists.toDoItems')
-    console.log(foundProjectById);
-    const foundToDoItem = await toDoItem.find({});
-    res.render('projectDetails', {foundProject, foundProjectById, foundToDoItem})
+// CREATE to-do list (Grid View)
+app.post('/todolists/grid', async (req, res) => {
+    const { newToDoList } = req.body;
+    const createdToDoList = await toDoList.create({title: `${newToDoList}`});
+    await createdToDoList.save();
+    res.redirect('/todolists/grid');
 })
+
+// READ to-do list & to-do items (Grid View)
+app.get('/todolists/grid', async (req, res) => {
+    const foundToDoList= await toDoList.find({});
+    const foundToDoItem = await toDoItem.find({});
+    res.render('gridView', { foundToDoList, foundToDoItem });
+})
+
+// UPDATE to-do list title (Grid View)
+app.patch('/todolists/grid/:id', async (req, res) => {
+    const id = req.params.id;
+    const toDoListTitle = req.body.newToDoListTitleInput;
+    const foundToDoList = await toDoList.findById(id);
+    foundToDoList.title = toDoListTitle;
+    foundToDoList.save();
+    res.redirect('/todolists/grid');
+})
+
+// DELETE to-do list (Grid View)
+app.delete('/todolists/grid/:id', async (req, res) => {
+    const id = req.params.id;
+    await toDoList.findByIdAndDelete(id);
+    await toDoItem.deleteMany({toDoList: {_id: id}});
+    res.redirect('/todolists/grid');
+})
+
+// CREATE to-do item (Grid View)
+app.patch('/todolists/grid/:id/todoitems', async (req, res) => {
+    const id = req.params.id;
+    const { newToDo } = req.body;
+    const createdToDo = await toDoItem.create({content: `${newToDo}`, toDoList: {_id: id}}); 
+    createdToDo.save();
+    res.redirect('/todolists/grid');
+})
+
+// UPDATE to-do item (Grid View)
+app.patch('/todolists/grid/:id/todoitems/:id', async (req, res) => {
+    const id = req.params.id;
+    const { updateToDoInput } = req.body;
+    const foundToDoItem = await toDoItem.findById(id);
+    foundToDoItem.content = updateToDoInput;
+    foundToDoItem.save();
+    res.redirect('/todolists/grid');
+})
+
+// DELETE to-do item (Grid View)
+app.delete('/todolists/grid/:id/todoitems/:id', async (req, res) => {
+    const id = req.params.id;
+    await toDoItem.findByIdAndDelete(id);
+    res.redirect('/todolists/grid');
+})
+
+// CREATE to-do list (List View)
+app.post('/todolists', async (req, res) => {
+    const { newToDoList } = req.body;
+    const createdToDoList = await toDoList.create({title: `${newToDoList}`});
+    await createdToDoList.save();
+    res.redirect('/todolists');
+})
+
+// READ to-do list & to-do items (List View)
+app.get('/todolists', async (req, res) => {
+    const foundToDoList= await toDoList.find({});
+    const foundToDoItem = await toDoItem.find({});
+    res.render('viewToDoLists', { foundToDoList, foundToDoItem });
+})
+
+// UPDATE to-do list pinned status
+app.post('/todolists/:id', async (req, res) => {
+    const id = req.params.id;
+    const isPinned = req.body.isPinned;
+    const foundToDoList = await toDoList.findById(id);
+    foundToDoList.pinned = isPinned;
+    foundToDoList.save();
+    res.redirect('/dashboard');
+})
+
+// UPDATE to-do list title (List View)
+app.patch('/todolists/:id', async (req, res) => {
+    const id = req.params.id;
+    const toDoListTitle = req.body.newToDoListTitleInput;
+    const foundToDoList = await toDoList.findById(id);
+    foundToDoList.title = toDoListTitle;
+    foundToDoList.save();
+    res.redirect('/todolists');
+})
+
+// DELETE to-do list (List View)
+app.delete('/todolists/:id', async (req, res) => {
+    const id = req.params.id;
+    await toDoList.findByIdAndDelete(id);
+    await toDoItem.deleteMany({toDoList: {_id: id}});
+    res.redirect('/todolists');
+})
+
+// CREATE to-do items (List View)
+app.patch('/todolists/:id/todoitems', async (req, res) => {
+    const id = req.params.id;
+    const { newToDo } = req.body;
+    const createdToDo = await toDoItem.create({content: `${newToDo}`, toDoList: {_id: id}}); 
+    createdToDo.save();
+    res.redirect('/todolists');
+})
+
+// UPDATE to-do items (List View)
+app.patch('/todolists/:id/todoitems/:id', async (req, res) => {
+    const id = req.params.id;
+    const { updateToDoInput } = req.body;
+    const foundToDoItem = await toDoItem.findById(id);
+    foundToDoItem.content = updateToDoInput;
+    foundToDoItem.save();
+    res.redirect('/todolists');
+})
+
+// DELETE to-do items (List View)
+app.delete('/todolists/:id/todoitems/:id', async (req, res) => {
+    const id = req.params.id;
+    await toDoItem.findByIdAndDelete(id);
+    res.redirect('/todolists');
+})
+
 
 app.get('/', async (req, res) => {
     res.render('login');
 })
 
-app.post('/todo', async (req, res) => {
-    const { newToDo } = req.body;
-    console.log(newToDo);
-    toDoItem.create({content: `${newToDo}`});
-    res.redirect('/projects/:id');
-})
-
-app.get('/todo/edit/:id', async (req, res) => {
-    const {id} = req.params;
-    const foundToDoItem = await toDoItem.find({});
-    const foundToDoItemID = await toDoItem.findById(id);
-    res.render('edit', { foundToDoItem, foundToDoItemID });
-})
-
-app.patch('/todo/edit/:id', async (req, res) => {
-    const {id} = req.params;
-    const foundToDoItem = await toDoItem.findById(id);
-    foundToDoItem.content = `${req.body.content}`;
-    foundToDoItem.save();
-    res.redirect('/projects/:id');
-})
-
-app.delete('/todo/:id', async (req, res) => {
-    const id = req.params.id;
-    await toDoItem.findByIdAndDelete(id);
-    res.redirect('/projects/:id');
-})
-
 app.use((req, res) => {
     res.status(404).send('Not found!')
 })
+
 app.listen(3000, () => {
     console.log(`Listening on ${port}`);
 });
-
-
-
-

@@ -4,7 +4,7 @@ input {
     font-size: 18px;
 }
 
-#newToDoForm{
+.newToDoForm{
     display: none;
 }
 
@@ -27,7 +27,6 @@ nav.info {
 
 
 #leftLogIn {
-    /* border-right: 1px solid #4A4646; */
     background-color: #F2EAE4;
     height: 100vh;
 }
@@ -216,6 +215,7 @@ h1{
 }
 
 .toDoItem{
+    margin-top: 5px;
     list-style-type: none;
     color: #4A4646;
     font-family: 'Merriweather Sans', sans-serif;
@@ -227,20 +227,23 @@ h1{
     position: relative;
 }
 
+
 .toDoItem button{
     background-color: rgba(255,255,255, 0.5);
     border: rgba(255,255,255, 0.5);
 }
 
-#promptNewToDo{
+.promptNewToDo{
     background-color: rgba(255,255,255, 0.5);
     border: rgba(255,255,255, 0.5);
-    padding-right: 3px;
+    padding: 0px;
 }
 
+
 .promptNewToDoItem{
-    color: #4a464688;
-    font-size: 1.09em;
+    color: #F8B746;
+    font-size: 1.1em;
+    margin-right: 1em;
 }
 
 #mainContent {
@@ -274,7 +277,12 @@ input[type="checkbox"]:checked {
     margin-right: 1em;
 }
 
-#newToDo{
+.strikethrough{
+    text-decoration: line-through solid #F8B746;;
+}
+
+.newToDo{
+    margin-top: 5px;
     border: none;
     border-bottom: 0.5px solid #4a464683;
     color: #4A4646;
@@ -283,35 +291,16 @@ input[type="checkbox"]:checked {
     font-size: 16px;
 }
 
-#newToDo:focus, #newToDo:active{
+.newToDo:focus, .newToDo:active{
+    margin-top: 5px;
     border: none;
-    border-radius: 15px;
-    outline: 0.5px solid #4a464683;
+    border-bottom: 0.5px solid #4a464683;
+    outline: none;
     box-shadow: none;
     color: #4A4646;
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: 300;
     font-size: 16px;
-}
-
-.search{
-    background-color: rgba(255,255,255, 0.5);
-    border: rgba(255,255,255, 0.5);
-}
-
-.searchBar{
-    border: 1px solid #4a46462c;
-    border-radius: 50px;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-}
-
-.searchBar[input]{
-    color: #4A4646;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
 }
 
 .gearRow{
@@ -325,10 +314,6 @@ input[type="checkbox"]:checked {
     justify-content: end;
     padding-right: 18px;
     padding-top: 10px;
-}
-
-.searchForm{
-    margin-right: 2%;
 }
 
 .pageHeader{
@@ -347,7 +332,6 @@ input[type="checkbox"]:checked {
 .toDoList{
     padding-top: 1%;
     border-top: 1px solid #4a46462c;
-    /* border-bottom: 1px solid #4a46462c; */
 }
 
 h3{
@@ -355,6 +339,7 @@ h3{
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: 500;
     font-size: 1em;
+    display: inline;
 }
 
 .weekHeader{
@@ -374,30 +359,6 @@ h3{
 
 .gridView{
     margin-right: 0.75em;
-}
-
-.sideNav-projectList{
-    color: #4A4646;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-    list-style-type: none;
-    padding-left: 3em;
-}
-
-.projectListItemIcon{
-    font-size: 0.75em;
-    padding-right: 0.5em;
-}
-
-.projectTitle{
-    padding-top: 5%;
-}
-
-.projectTitleLink, .projectTitleLink:hover{
-    color: #4A4646;
-    font-family: 'Merriweather Sans', sans-serif;
-    text-decoration: none;
 }
 
 .promptNewToDoItemCol{
@@ -428,4 +389,140 @@ h3{
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: 300;
     font-size: 16px;
+}
+
+#newToDoListBtn{
+    background-color: rgba(255,255,255, 0.5);
+    border: none;
+}
+
+.newToDoListIcon{
+    color: #4a464688;
+    font-size: 1.09em;
+}
+
+.saveBtn{
+    margin-left: 1em;
+    background-color: #F8B746;
+    color: #4A4646;
+    height: 50px;
+    width: 100px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.toDoListSettings{
+    color: #4a464688;
+    font-size: 1.09em;
+}
+
+.toDoListSettingsBtn{
+    background-color: rgba(255,255,255, 0.5);
+    border: rgba(255,255,255, 0.5);
+    display: inline;
+}
+
+.submitNewToDoListTitle{
+    background-color: rgba(255,255,255, 0.5);
+    border: rgba(255,255,255, 0.5);
+}
+
+.promptNewToDoListTitle{
+    background-color: rgba(255,255,255, 0.5);
+    border: rgba(255,255,255, 0.5);
+}
+
+.toDoListTitleHeader{
+    display: inline;
+}
+
+.newToDoListTitleForm{
+    display: none;
+}
+
+.newToDoListTitleInput{
+    border: none;
+    color: #4a464688;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.newToDoListTitleInput:focus, .newToDoListTitleInput:active{
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.newToDoPlaceHolder{
+    margin-top: 5px;
+    color: #4a464688;
+}
+
+#newToDoList{
+    border: none;
+    color: #4a464688;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+#newToDoList:focus, #newToDoList:active{
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.nothingToDisplay{
+    display: inline;
+    margin-top: 2em;
+    margin-right: 1em;
+    color: #4a464652;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    border: none;
+    border-radius: 25px;
+}
+
+.updateToDoForm{
+    display: none;
+}
+
+.updateToDoInput{
+    border: none;
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.updateToDoInput:focus, .updateToDoInput:active{
+    color: #4A4646;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid #4a464683;
+}
+
+.submitNewToDo{
+    background-color: rgba(255,255,255, 0.5);
+    border: rgba(255,255,255, 0.5);
+}
+
+form {
+    display: inline;
 }

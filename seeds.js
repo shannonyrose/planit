@@ -12,18 +12,18 @@ mongoose.connect('mongodb://localhost:27017/planit', { useNewUrlParser: true, us
         console.log(err);
     })
 
-// const testToDo = new toDoItem({
-//     date: '2022-03-24',
-//     category:'general',
-//     content: 'go to the store'
-// });
+const testToDo = new toDoItem({
+    date: '2022-04-01',
+    category:'cleaning',
+    content: 'wash car'
+});
 
-// testToDo.save().then(testToDo => {
-//     console.log(testToDo);
-// })
-// .catch(err => {
-//     console.log(err);
-// })
+testToDo.save().then(testToDo => {
+    console.log(testToDo);
+})
+.catch(err => {
+    console.log(err);
+})
 
 // const makeToDoList = async function(){
 //     const cleanKitchen = new toDoList({title: 'Clean the Kitchen'})
@@ -46,17 +46,17 @@ mongoose.connect('mongodb://localhost:27017/planit', { useNewUrlParser: true, us
 
 // makeProject();
 
-// const makeToDoItem = async function(){
-//     const task1 = new toDoItem({content: 'Wash dishes'})
-//     const task2 = new toDoItem({content: 'Clean counters'})
-//     const task3 = new toDoItem({content: 'Wipe stovetop'})
-//     const task4 = new toDoItem({content: 'Sweep floors'})
-//     const cleanKitchen = await toDoList.findOne({title: 'Clean the Kitchen'});
-//     cleanKitchen.toDoItems.push(task1);
-//     cleanKitchen.toDoItems.push(task2);
-//     cleanKitchen.toDoItems.push(task3);
-//     cleanKitchen.toDoItems.push(task4);
-//     await cleanKitchen.save();
+// const makeToDoItem = function(){
+//     const task5 = new toDoItem({content: 'Wash dishes'});
+//     const task6 = new toDoItem({content: 'Clean counters'});
+//     const task7 = new toDoItem({content: 'Wipe stovetop'});
+//     const task8 = new toDoItem({content: 'Sweep floors'});
+//     // const cleanKitchen = await toDoList.findOne({title: 'Clean the Kitchen'});
+//     // cleanKitchen.toDoItems.push(task1);
+//     // cleanKitchen.toDoItems.push(task2);
+//     // cleanKitchen.toDoItems.push(task3);
+//     // cleanKitchen.toDoItems.push(task4);
+//     // await cleanKitchen.save();
 // }
 
 // makeToDoItem();
