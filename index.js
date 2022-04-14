@@ -31,6 +31,11 @@ app.get('/dashboard', async (req, res) => {
     res.render('index', { foundToDoList, foundToDoItem});
 })
 
+// Temporary route to allow login button to work without displaying form info in URL
+app.post('/dashboard', async (req, res) => {
+    res.redirect('/dashboard');
+})
+
 // READ settings
 app.get('/settings', async (req, res) => {
     res.render('settings');
